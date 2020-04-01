@@ -1,3 +1,4 @@
+{-# LANGUAGE ViewPatterns #-}
 main = print $ fibMod 0 8
 
 fibMod m i =
@@ -5,9 +6,9 @@ fibMod m i =
   where
     -- really (`mod` 0) should be id per mathematical definition
     modulo = if m>0 then (`mod` m) else id
-    pow f@[a,b,c] i = let (q,r) = divMod i 2
-      in if q>0
-      then
+    pow f@[a,b,c] i =
+      let (q, fromIntegral -> r) = divMod i 2
+      in if q>0 then
         (`pow` q) $
         take 3 $
         drop r $
