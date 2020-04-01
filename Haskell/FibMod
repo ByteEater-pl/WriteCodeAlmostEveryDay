@@ -1,0 +1,19 @@
+main = print $ fibMod 0 8
+
+fibMod m i =
+  (\[_,x,_]->x) $ pow [0,1,1] i
+  where
+    modulo = if m>0 then (`mod` m) else id
+    pow [a,b,c] i =
+      if q>0
+      then
+        pow q $
+        take 3 $
+        drop r $
+        map modulo [
+          a*a+b*b,
+          (a+c)*b,
+          b*b+c*c,
+          (2*b+c)*c]
+      else [1-r,r,1]
+      where (q,r) = divMod i 2
