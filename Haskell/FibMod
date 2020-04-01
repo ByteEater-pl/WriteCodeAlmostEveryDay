@@ -3,11 +3,12 @@ main = print $ fibMod 0 8
 fibMod m i =
   (\[_,x,_]->x) $ pow [0,1,1] i
   where
+    -- really (`mod` 0) should be id per mathematical definition
     modulo = if m>0 then (`mod` m) else id
-    pow [a,b,c] i =
-      if q>0
+    pow f@[a,b,c] i = let (q,r) = divMod i 2
+      in if q>0
       then
-        pow q $
+        (`pow` q) $
         take 3 $
         drop r $
         map modulo [
@@ -15,5 +16,4 @@ fibMod m i =
           (a+c)*b,
           b*b+c*c,
           (2*b+c)*c]
-      else [1-r,r,1]
-      where (q,r) = divMod i 2
+      else [[0,1,1],f]!!r
