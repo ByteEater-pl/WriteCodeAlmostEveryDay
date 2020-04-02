@@ -1,18 +1,23 @@
-{-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE
+  LambdaCase,
+  ViewPatterns
+#-}
 main = print $ fibMod 0 8
 
-fibMod m i = pow [0,1,1] i !! 1 where
-  -- really (`mod` 0) should be id per mathematical definition
-  modulo = if m>0 then (`mod` m) else id
-  pow f@[a,b,c] i =
-    let (q, fromIntegral -> r) = divMod i 2
-    in if q>0 then
-      (`pow` q) $
-      take 3 $
-      drop r $
-      map modulo [
-        a*a+b*b,
-        (a+c)*b,
-        b*b+c*c,
-        (2*b+c)*c]
-    else [[1,0,1],f]!!r
+fibMod m = \case
+  0 -> 0
+  i -> pow [0,1,1] i !! 1 where
+    -- really (`mod` 0) should be id per mathematical definition
+    modulo = if m>0 then (`mod` m) else id
+    pow f@[a,b,c] n =
+      let (q, fromIntegral -> r) = divMod n 2
+      in if q>0 then
+        (`pow` q) $
+        take 3 $
+        drop r $
+        map modulo [
+          a*a+b*b,
+          (a+c)*b,
+          b*b+c*c,
+          (2*b+c)*c]
+      else f
