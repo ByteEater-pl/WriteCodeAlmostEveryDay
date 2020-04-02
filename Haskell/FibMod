@@ -2,16 +2,15 @@
   LambdaCase,
   ViewPatterns
 #-}
-main = print $ fibMod 0 8
+main = print $ fibMod 0 9
 
 fibMod m = \case
   0 -> 0
   i -> pow [0,1,1] i !! 1 where
-    pow f@[a,b,c] n =
+    pow f@(a:b:c:_) n =
       let (q, fromIntegral -> r) = divMod n 2
       in if q>0 then
         (`pow` q) $
-        take 3 $
         drop r $
         -- really (`mod` 0) should be id per mathematical definition
         [if m>0 then mod x m else x
