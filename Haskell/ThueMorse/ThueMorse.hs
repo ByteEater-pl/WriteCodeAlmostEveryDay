@@ -1,5 +1,5 @@
 import Data.Function
-main = print $ take 9 <$>
+main = sequence_ $ print <$> take 9 <$>
   [seqThueMorse, seqThueMorse2, seqThueMorse3]
 
 seqThueMorse = fix $ (0:).tail.(>>= \x->[x,1-x])
