@@ -1,5 +1,5 @@
 import CodeWorld
-main = drawingOf $ dragon 9
+main = drawingOf $ dilated 5 $ dragon 13
 
 dragon 0 = polyline [(0,0),(0,1)]
 dragon n =
