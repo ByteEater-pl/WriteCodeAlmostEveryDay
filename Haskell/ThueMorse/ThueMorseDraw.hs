@@ -10,7 +10,7 @@ main = drawingOf $ pictures [
   dilated 0.2 $
   polyline $
   take 55 $
-    (0,0):(0,1): snd (mapAccumL
+    (0,0) : snd (mapAccumL
       (\(v,d) b -> let v' = add_v2 v d in
         ((v', mul_m2x2_v (m!!b) d), v'))
       ((0,1),(0,1))
