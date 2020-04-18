@@ -1,28 +1,33 @@
 func sort<T: Comparable>(
   _ arr: inout [T],
-  _ start: inout Int = 0,
-  _ end: inout Int = arr.count)
+  _ start: Int = 0,
+  _ end: Int? = nil)
 {
-  while start < end {
-    var i = start
+  var
+    lower = start,
+    upper = end ?? arr.count
+  while lower < upper {
+    var i = lower
+    print(arr,i,upper)
     let pivot = arr[i]
-    for j in i + 1 ... end
+    for j in i + 1 ..< upper
     {
       let t = arr[j]
       if t < pivot {
         arr[j] = arr[i]
-        i += 1
         arr[i] = t
+        i += 1
       }
     }
-    if i > start {
-      var bounds = [(start, i), (i, end)]
-      if 2 * i <= start + end
-        { bounds.reverse() }
-      (start, end) = bounds[0]
-      sort(&arr, &bounds[1].0, &bounds[1].1)
+    if i > lower {
+      var
+        bounds = [lower, i, i, upper],
+        j = 2 * i > lower + upper ? 0 : 2
+      (lower, upper) = (bounds[j], bounds[j + 1])
+      j = (j + 2) % 4
+      sort(&arr, bounds[j], bounds[j + 1])
     }
-    else { start += 1 }
+    else { lower += 1 }
   }
 }
 
