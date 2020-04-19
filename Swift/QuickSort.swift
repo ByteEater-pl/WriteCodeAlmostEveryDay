@@ -8,7 +8,6 @@ func sort<T: Comparable>(
     upper = end ?? arr.count
   while lower < upper {
     var i = lower
-    print(arr,i,upper)
     let pivot = arr[i]
     for j in i + 1 ..< upper
     {
