@@ -19,9 +19,8 @@ func sort<T: Comparable>(
       }
     }
     if i > lower {
-      var
-        bounds = [lower, i, i, upper],
-        j = 2 * i > lower + upper ? 0 : 2
+      let bounds = [lower, i, i, upper]
+      var j = 2 * i > lower + upper ? 0 : 2
       (lower, upper) = (bounds[j], bounds[j + 1])
       j = (j + 2) % 4
       sort(&arr, bounds[j], bounds[j + 1])
