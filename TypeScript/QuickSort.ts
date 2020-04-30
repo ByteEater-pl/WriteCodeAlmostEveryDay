@@ -17,11 +17,10 @@ function sort(
     }
     if (i > start)
     {
-      const
-        bounds = [[start, i], [i, end]],
-        select = +(2 * i > start + end)
-      sort(arr, ...bounds[select]);
-      [start, end] = bounds[1 - select]
+      const bounds = [start, i, i, end]
+      sort(arr, ...bounds.splice(
+        2 * i > start + end ? 2 : 0, 2));
+      [start, end] = bounds
     }
     else start++
   }
