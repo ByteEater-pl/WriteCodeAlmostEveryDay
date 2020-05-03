@@ -1,7 +1,7 @@
 rev([],[]).
 rev([A],[A]).
-rev([A,B|T],[Z|R]) :-
-  rev([B|T],[Z|K]),
+rev([A|T],[Z|R]) :-
+  rev(T,[Z|K]),
   rev(K,L),
   rev([A|L],R).
 
