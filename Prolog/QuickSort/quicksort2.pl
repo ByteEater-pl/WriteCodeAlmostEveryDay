@@ -15,7 +15,8 @@ part(H,[X|T],L,E,G) :-
   part(H,T,K,D,F).
 
 main :-
-  randseq(9,22,L),
+  length(L,22),
+  maplist(random(0,9),L),
   qsort(L,S),
   writeln(L),
   writeln(S).
