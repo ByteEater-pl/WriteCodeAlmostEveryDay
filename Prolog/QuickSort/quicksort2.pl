@@ -16,5 +16,4 @@ main :-
   length(L,22),
   maplist(random(0,9),L),
   qsort(L,S),
-  writeln(L),
-  writeln(S).
+  maplist(writeln,[L,S]).
