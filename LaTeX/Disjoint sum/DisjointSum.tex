@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\usepackage{mathtools}
+\newcommand{\A}{\mathcal A}
+\newcommand{\B}{\mathcal B}
+\begin{document}
+\begin{definition}\label{du1}
+A \textbf{disjoint union} of sets $\A$ and $\B$ is the set:
+\[
+\A \uplus \B \coloneqq
+\A \times \{0\} \cup \B \times \{1\}
+\]
+\end{definition}
+\begin{definition}\label{du2}
+A \textbf{disjoint union} of different sets $\A$ and $\B$ is the set:
+\[
+\A \uplus \B \coloneqq
+\A \times \{\A\} \cup \B \times \{\B\}
+\]
+\end{definition}
+\textbf{Definition~\ref{du1}} generalizes to sequences (including transfinite ones) of sets and indexed families, whereas \textbf{Definition~\ref{du2}} to families (but not multisets) of sets.
+\begin{theorem}\[
+\# \A \uplus \B =
+\# \A + \# \B =
+\# \A \cup \B + \# \A \cap \B
+\]\end{theorem}
+\end{document}
