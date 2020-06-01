@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[leqno,fleqn]{amsmath}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem*{theorem}{Twierdzenie}
+\begin{document}
+\begin{theorem}\ \\
+Niech $f \in \mathcal B ^ \mathcal A$. Następujące warunki są równoważne:
+\begin{align}
+& f \in Bij(\mathcal A, \mathcal B) \\
+& \operatornamewithlimits\exists_
+{g \subseteq \mathcal B \times \mathcal A}
+g \circ f = id_\mathcal A \land f \circ g = id_\mathcal B \\
+& \operatornamewithlimits{\exists!}_
+{g \subseteq \mathcal B \times \mathcal A}
+g \circ f = id_\mathcal A \land f \circ g = id_\mathcal B \\
+& f^{-1} \in \mathcal A ^ \mathcal B
+\end{align}
+\end{theorem}
+\end{document}
