@@ -1,0 +1,9 @@
+count(
+	*
+	//*[not(name() = following-sibling::*!name())]
+	/@*
+	!lower-case(local-name())
+  [matches(., '^[bcdfghklmnpqrstvxz]*$') and (
+		let $s := string-to-codepoints(.)
+		return deep-equal($s, reverse($s)))]
+)
